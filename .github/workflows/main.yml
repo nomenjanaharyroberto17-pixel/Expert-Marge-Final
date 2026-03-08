@@ -1,0 +1,17 @@
+name: Build Android APK
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build with Buildozer
+        uses: Artemas-Skade/buildozer-action@v1
+        with:
+          command: android debug
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: Expert-Marge-APK
+          path: bin/*.apk
+          
